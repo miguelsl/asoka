@@ -1,0 +1,1 @@
+[07-Jan-2014 12:37:50 UTC] PHP Notice:  ob_end_clean(): failed to delete buffer. No buffer to delete in /home/portera/public_html/asoka/include/jasper/modulosPHP/informeJasper.php on line 821

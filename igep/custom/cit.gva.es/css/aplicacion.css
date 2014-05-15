@@ -1,0 +1,987 @@
+@charset "ISO-8859-1";
+@import url("loading.css");
+@import url("debugger.css");
+@import url("login.css");
+@import url("bumpbox.css");
+@import url("tree.css");
+/* ------------------------------------------------------------------------------- */
+/* --- ESTILO PANTALLA INICIAL DE LA APLICACIÓN ---  */
+/* ------------------------------------------------------------------------------- */
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	border: 0px;
+	color: #4E4E4E;
+	background-color: #F5F5F5;
+	margin: 5px;
+	overflow: auto;
+}
+
+.text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	border: 0px;
+	color: #4E4E4E;
+	background-color: #F5F5F5;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+/* -------------------------------- PANTALLA DE ENTRADA A LA APLICACIÓN ----------------------- */
+/* -------------------------------------------------------------------------------------------- */
+.container {
+	width: 100%;
+	min-height: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	border-style: none;
+	background-color: #f5f5f5;
+}
+
+.header {
+	height: 14px;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	border-style: none;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #8F8F8F;
+}
+
+div#header {
+	height: 14px;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-style: none;
+	position: relative;
+	display: table;
+}
+div#headerTxt {
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	float: left;
+	left: 35px;
+	position: relative;
+	width: 90%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+div#headerToolbar {
+	display: inline-block;
+	text-align: right;
+	float: left;
+	width: 10%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	background-color: #8F8F8F;
+}
+
+.btnCloseApp {
+	border-style:none; 
+	height:14px; 
+	width:14px;
+	position: relative;
+	left: 1px; 
+}
+
+/* ----------------- */
+/* TITULO APLICACIÓN */
+div#containerTitle {
+	height: 14px;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	text-align: center;
+	font-weight: bold;
+	border-style: none;
+	position: relative;
+	display: table;
+}
+
+.backgroundTitle {
+	width: 100%;
+	height: 200px;
+	vertical-align: bottom;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #dfdfdf;
+}
+
+div#descrTitle {
+	font-size: 20px;
+	color: #000000;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+
+div#title {
+	font-size: 80px;
+	color: #2C658F;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+
+div#version {
+	font-size: 11px;
+	color: #4E4E4E;	
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+
+/* ------------ */
+/* MENÚ MÓDULOS */
+.containerModules {
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	border-style: none;
+	vertical-align: top;
+}
+
+div#containerTitleModules { 
+	height: 20px;
+	width: 100%;
+	padding: 0px;
+	border-style: none;
+	font-weight: bold;
+	background-color: #2c658f;
+	vertical-align: middle;
+}
+
+div#titleModules {
+	text-align: center;
+	float: left;
+	width: 33%
+}
+
+.titleModules {
+	font-size: 12px;
+	font-weight: bold;
+	vertical-align: middle;
+	color: #FFFFFF;
+	background-color: #2c658f;
+}
+
+div#containerOptions {
+	vertical-align: top;
+	width: 100%;
+	height: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+
+.contentMainMenu {
+	display: block;
+	float: left;
+    margin:0px;
+}
+	
+.mainMenu {
+	width: 30%;
+	float: left;
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 3%;
+}
+
+.contentMainSubMenu {
+	display: block;
+	float: left;
+    margin:0px;
+}
+
+.mainSubMenu {
+	width: 30%;
+	float: left;
+	display: block;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 3%;
+}
+
+.linkOption {
+	font-size: 14px;
+	font-weight: normal;
+	color: #8F8F8F;
+	text-decoration: none;
+}
+
+.footer {
+	vertical-align:bottom; 
+	position: absolute;
+	left: 50%;
+	bottom: 2%;
+	margin-left: -150px;
+}
+
+
+/* ------------------------------------------------------------------------------------------------- */
+/* -------------------------------- ESTRUCTURA DE UNA PANTALLA DE APLICACIÓN ----------------------- */
+/* ------------------------------------------------------------------------------------------------- */
+
+/* ----------------------- */
+/* BARRA SUPERIOR PANTALLA */
+div#containerBar {
+	height:30px;
+	width:100%;
+	background-color:#2D6893;
+	color: #FFFFFF;
+}
+
+div#logoBar {
+	padding: 2px;
+	margin-top: 2px;
+	width: 2%;
+	float: left;
+}
+
+.logoBar {
+	width:20px; 
+	height:20px; 
+	border-style:none; 
+}
+
+div#menuBar {
+	margin-top: 6px;
+	width: 4%;
+	float: left;
+	vertical-align:bottom;
+}
+
+div#titleBar {
+	width: 40%;
+	margin-top: 6px;
+	text-align: center;
+	float: left;
+}
+	
+div#userBar {
+	width: 20%;
+	margin-top: 6px;
+	text-align: center;
+	float: left;
+}
+	
+div#perfilBar {
+	width: 12%;
+	margin-top: 6px;
+	border-style:none;
+	text-align:center; 
+	font-weight:bold;
+	float: left;
+}
+div#timeBar {
+	width: 5%;
+	margin-top: 6px;
+	display: inline;
+	float: left;
+}
+div#dateBar {
+	width: 5%;
+	margin-top: 6px;
+	display: inline;
+	float: left;
+}
+div#toolBar {
+	width: auto;
+	margin-right: 0px;
+	margin-top: 6px;
+	text-align: right;
+	border-style:none;
+	float: right;
+	vertical-align: middle;
+}
+
+.btnClose {
+	border-style:none;
+	height:14px; 
+	width:14px;
+	position: relative;
+	left: 1px;
+}
+
+div#bottomBar {
+	background-color: #DFDFDF;
+	height: 3px;
+	width: 100%;
+	vertical-align: bottom;
+	float: left;
+}
+
+.frame {
+	width:100%;
+	vertical-align:top;
+	background-color: #F5F5F5;
+}
+
+/* CWPanel */
+.panel {
+	padding: 0px;
+	margin: 0px;
+	height: auto;
+	width: 100%;
+	float: left;
+	z-index: 10;
+}
+
+/* -------------------- */
+/* BARRA SUPERIOR PANEL */
+.barTopPanel {
+	background-color: #8F8F8F;	
+	width: 100%;
+	height: 20px;
+	padding: 1px;
+}
+
+.titlePanel {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	height: 20px;
+	color: #FFFFFF;
+	margin-left: 30px;
+}
+
+/* ------------ */
+/* ESTILO PANEL */
+.background {
+	height: auto;
+	width: 100%;
+	background-color: #F5F5F5;
+}
+
+.backgroundFil {
+	height: auto;
+	width: 100%;
+	background-color: #F5F5F5;
+}
+
+.backgroundLis {
+	height: auto;
+	width: 100%;
+	background-color: #F5F5F5;
+}
+
+.backgroundEdi {
+	height: auto;
+	width: 100%;
+	background-color: #F5F5F5;
+}
+
+/* ------------------------------------- */
+/* CAPA BLOQUEO PANEL REGISTRO SIN DATOS */
+.blockPanel {	
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #4b707e;
+	background: linear-gradient(to top, #d1d4de 0%, #FFFFFF 100%);
+}
+
+
+/* -------------------- */
+/* BARRA INFERIOR PANEL */
+.barBottomPanel {
+	color: #000000;
+	background-color: #DFDFDF;
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.pages {
+	font-size: 12px;
+	color: #4E4E4E;
+	background-color: #DFDFDF;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.buttonPag {
+	border-style:none; 
+	height:9; 
+	width:8; 
+}
+
+.goToPage {
+}
+	
+.iconMod {
+	display:none; 
+	width: 18px; 
+	height:14px; 
+	border-style:none; 
+}
+
+
+/* ------------------ */
+/* BARRA LATERAL TABS */
+#containerTabs { 
+	margin-top: 26px;
+	width: 3%; 
+	float: left;
+	z-index: 12;
+}
+
+.imgTab_on { 
+}
+
+.tab_on {
+}
+
+.imgTab_off { 
+}
+
+.tab_off {
+}
+
+.hiddenTab {
+}
+
+/* ------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------- ESTILO ELEMENTOS PANEL --------------------------------- */
+/* ------------------------------------------------------------------------------------------------- */
+
+/* -----------------------*/
+/*  ESTILO AYUDA EN PANEL */
+.helpText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	border: 0px;
+	color: #4E4E4E;
+}
+
+.help {
+	width: auto;
+	margin:0 auto;
+	padding-left: 10px;
+	background:#f7f2cf;
+    -webkit-border-radius: 10px; 
+   -webkit-box-shadow: 3px 3px 0 #DFDFDF;
+}
+
+/* ---------------*/
+/* ESTILO SOLAPAS */
+.containerFlaps {
+	clear:both;	
+	border-left:2px solid #8F8F8F;
+	border-bottom:2px solid #8F8F8F;
+}
+
+/* SOLAPA INACTIVA */
+.flap {
+	top:0px;
+	left:10px;
+	height:26px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+	padding-left: 5px;
+	padding-right: 2px;
+	padding-top: 5px;
+	
+	border-left:2px solid #8F8F8F;
+	border-right:2px solid #8F8F8F;
+	border-top:2px solid #8F8F8F;
+    border-top-right-radius: 10px;
+    
+    background-color:#8F8F8F;
+	cursor: pointer;
+	float:left;
+	z-index:0;
+}
+
+.optionFlap {
+	padding-left: 5px;
+	padding-right: 2px;
+	padding-top: 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: center;
+	z-index: 1;
+}
+
+/* SOLAPA ACTIVA */
+.flapOn {
+	top:0px;
+	left:10px;
+	height:25px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+	padding-left: 5px;
+	padding-right: 2px;
+	padding-top: 5px;
+	
+	border-left:2px solid #8F8F8F;
+	border-right:2px solid #8F8F8F;
+	border-top:2px solid #8F8F8F;
+	border-top-right-radius: 10px;
+	
+	float:left;
+	z-index:0;
+}
+
+.optionFlapOn {
+	padding-left: 5px;
+	padding-right: 2px;
+	padding-top: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #8F8F8F;
+	text-decoration: none;
+	text-align: center;
+	z-index: 1;
+}
+
+/* --------------------- */
+/* ESTILO PANEL TABULAR  */
+.tabular {
+	display:none;
+}
+
+.tabularHead {
+	background-color: #F5F5F5;
+}
+
+.tabularTitle { 
+	color: #2D6893;
+	border: 0px #F5F5F5 solid;
+	text-align: center;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.columnTitle {
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	vertical-align:top;
+}
+
+.columnTitle img {
+	vertical-align: middle;
+	border: none;
+}
+
+.tabularLineHead {  
+	height: 2px;
+	background-color: #2D6893;
+}
+
+.tabularLineRow {
+	height: 1px;
+	background-color: #2D6893;
+}
+
+/* ESTILO FILAS TABULAR */
+/* par / impar */
+.evenRecord {
+	background-color: #F5F5F5;
+}
+.evenRecord input{
+	background-color: #F5F5F5;
+}
+.evenRecord select{
+	background-color: #F5F5F5;
+}
+.evenRecord textarea{
+	background-color: #F5F5F5;
+}
+
+.oddRecord {
+	background-color: #F5F5F5;
+}
+.oddRecord input{
+	background-color: #F5F5F5;
+}
+.oddRecord select{
+	background-color: #F5F5F5;
+}
+.oddRecord textarea{
+	background-color: #F5F5F5;
+}
+
+/* colorear filas */
+.alertRow {
+	background-color: #FFE5C4;
+}
+.alertRow input {
+	background-color: #FFE5C4;
+}
+.alertRow select {
+	background-color: #FFE5C4;
+}
+.alertRow textarea {
+	background-color: #FFE5C4;
+}
+
+.noticeRow {
+	background-color: #A9C7DA;
+}
+.noticeRow input {
+	background-color: #A9C7DA;
+}
+.noticeRow select {
+	background-color: #A9C7DA;
+}
+.noticeRow textarea {
+	background-color: #A9C7DA;
+}
+
+.errorRow {
+	background-color: #F1C2C5;
+}
+.errorRow input {
+	background-color: #F1C2C5;
+}
+.errorRow select {
+	background-color: #F1C2C5;
+}
+.errorRow textarea {
+	background-color: #F1C2C5;
+}
+
+.suggestionRow {
+	background-color: #ced6b2;
+}
+.suggestionRow input {
+	background-color: #ced6b2;
+}
+.suggestionRow select {
+	background-color: #ced6b2;
+}
+
+/* on / over / deleted */
+.rowOn {
+	background-color: #DFDFDF;
+}
+.rowOn input {
+	background-color: #DFDFDF;
+}
+.rowOn select {
+	background-color: #DFDFDF;
+}
+.rowOn textarea {
+	background-color: #DFDFDF;
+}
+
+.rowOver {
+	background-color: #FFD5AA;
+}
+.rowOver input {
+	background-color: #FFD5AA;
+}
+.rowOver select {
+	background-color: #FFD5AA;
+}
+.rowOver textarea {
+	background-color: #FFD5AA;
+}
+
+.rowDeleted {
+	background-color: #F5F5F5;
+}
+.rowDeleted input {
+	background-color: #F5F5F5;
+}
+.rowDeleted select {
+	background-color: #F5F5F5;
+}
+.rowDeleted textarea {
+	background-color: #F5F5F5;
+}
+
+/* ------------------- */
+/*  ESTILO INFO FECHA  */
+.dateFormat {
+	font-size: 10px;
+	border: 0px;
+	display: inline;
+}
+
+/* ---------------- */
+/*  ESTILO BOTONES  */
+.button {
+	color: #2C658F;
+	font-size: 11px;
+	font-weight: normal;
+	cursor:pointer;
+	border: thin #C1CADD solid;
+	background-color: #FFFFFF;
+}
+
+.button_on {
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: normal;
+	cursor:pointer;
+	border: thin #FFFFFF solid;
+	background-color: #ED7936;
+}
+
+.btnCalendar {
+	width: 17px;
+	height: 17px;
+	vertical-align: middle; 
+}
+
+/* ---------------------- */
+/*  ESTILO ETIQUETA RADIO */
+.labelRadio {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	border: 0px;
+	color: #4E4E4E;
+}
+
+/* -------------------------- */
+/*  ESTILO CAMPO TEXTO ENLACE */
+.link {
+	text-decoration: underline;
+	color: #0000FF;
+}
+
+/* ----------------- */
+/* ESTILO CWSelector */
+.groupFields {
+	color: #4E4E4E;
+	border: 1px solid #4E4E4E;
+	height: 18px;
+}
+
+/* --------------- */
+/*  ESTADO CAMPOS  */
+/* Aspecto campos dentro de un formulario de búsqueda o una ficha */
+.edit {
+	color: #234372;
+	border: 1px solid #C1CADD;
+	background-color: #FFFFFF;
+}
+
+.noEdit {
+	color: #234372;
+	border: 1px solid #C1CADD;
+	background-color: #E2E4E9;
+}
+
+.new {
+	color: #64799B; 
+	border: 1px solid #C1CADD;
+	background-color: #E2E4E9;
+}
+
+.modify {
+	font-weight: bold;
+	color: #234372;
+	border: 1px solid #C1CADD;
+	background-color: #FFFFFF;
+}
+
+.delete {
+	color: #CBCBCB;
+}
+
+/* ----------------------- */
+/* ASPECTO CAMPOS EN TABLA */
+/* editable = true */
+.tableEdit {
+	background-color: #F5F5F5;
+}
+/* editable = false */
+.tableNoEdit {
+	background-color: #F5F5F5;
+}
+/* editable = nuevo */
+.tableNew {
+	background-color: #F5F5F5;
+}
+
+.tableModify {
+	font-weight: bold;
+	color: #234372;
+	border: 1px solid #C1CADD;
+}
+
+.tableDelete {
+	color: #CBCBCB;
+}
+
+.tableInsert {
+	font-weight: bold;
+	color: #234372;
+	border: 1px solid #C1CADD;
+	background-color: #FFFFFF;
+}
+
+
+/*----------*/
+/* MENSAJES */
+/*----------*/
+
+/* ESTILO PARA VENTANAS DE ERROR Y AVISO */
+.backgroundGray { color: #000000; background-color: #DFDFDF; text-align: right; vertical-align: top; border:0px;}
+.backgroundBlue { color: #000000; background-color: #2C658F;}
+.backgroundRed { color: #000000; background-color: #BB000C;}
+.backgroundGreen { color: #000000; background-color: #7A8F2C;}
+.backgroundYellow { color: #000000; background-color: #FFAB3F;}
+.shortNotice { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-weight:normal; color: #FFFFFF; text-align: left;}
+.longNotice { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-weight:normal; text-align: left; vertical-align:middle; background-color: #FFFFFF;}
+.errorCode{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; color: #FFFFFF; }
+
+/************************************************************/
+/* Enlaces pestañas maestro - nDetalles */
+#detalles {
+}
+
+.linkDetailOn {    
+	font-size: 10pt;
+	font-weight: bold;
+	padding: 4px;
+	background-color: #8F8F8F;
+	border-top: 2px solid #666666;
+    border-right: 3px solid #666666;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.linkDetail {
+	font-size: 10pt;
+	font-weight: bold;
+	padding: 4px;
+	background-color: #D2D2D2;
+	color: #8F8F8F;
+	text-decoration: none;
+}
+
+.linkDetail:link,
+.linkDetail:visited {
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 2px solid #666666;
+}
+
+.linkDetail:hover {
+	border-top: 2px solid #666666;
+	border-right: 1px solid #cccccc;
+	border-left: 2px solid #666666;
+	color: #8F8F8F;
+	background-color: #D2D2D2;
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- ACERCA DE ----------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+.about {
+  height: auto;
+  width: 400px;
+  display: block;
+  background: #ffffff;
+  border: 5px solid #7d89a2; 
+  -webkit-border-radius: 5px 5px 5px 5px;  
+  border-radius: 5px 5px 5px 5px;  
+  box-shadow: 5px 5px 0 #d7d2d2;
+  -webkit-box-shadow: 5px 5px 0 #d7d2d2;
+  padding:5px 5px 5px 5px;  
+}
+
+.toolbarAbout {
+  padding-left:0px;
+  height: 150px;
+  margin: 2px 5px;
+  background: #FFFFFF;
+  -webkit-border-radius: 5px 5px 5px 5px;  
+  border-radius: 5px 5px 5px 5px;  
+  padding:10px 5px 10px 5px;  
+  border:1px solid #C1CADD; 
+  color: #000000;
+  font-weight: normal;
+  font-size: 12px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.logoAbout {
+  background: #FFFFFF;
+  height: 150px;
+  float:left;
+}
+
+img.logoAbout {
+  height: 125px;
+  border: none;
+}
+
+.titleAbout {
+  font-weight: normal;
+  padding-left:0px;
+  width: 200px;
+  height: 150px;
+  float:right;
+  color:#000000;
+  background: #FFFFFF;
+}
+
+.text1 {
+  font-weight:bold;
+  font-size:16px;
+  margin-left: 20px;
+  margin-top: 40px;
+  vertical-align:-70px;
+  text-align:center;
+}
+
+.text2 {
+  font-size:12px;
+  margin-left: 20px;
+  margin-top: 40px;
+  vertical-align:-70px;
+  text-align:center;
+}
+
+.text3 {
+  font-weight:normal;
+  font-size:10px;
+  margin-left: 20px;
+  margin-top: 40px;
+  vertical-align:-70px;
+  text-align:center;
+}
+
+.logoBottomAbout {
+  float: none;
+  margin-top: 30px;
+  color:#000000;
+  font-weight:normal;
+  font-size:12px;
+  vertical-align:middle;
+  text-align:center;
+}
+ 
+.toolbarBottomAbout {
+  float: none;
+  margin-top: 10px;
+  color:#000000;
+  font-weight:normal;
+  font-size:12px;
+  vertical-align:middle;
+  text-align:right;
+}

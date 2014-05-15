@@ -1,0 +1,44 @@
+<llamadaJasper id="TribunalParams.jasper">
+ <jasperFile fileName="./ejemplos/InformeSinBD/EjemploXML2.jasper"/>
+ <jasperDataSource type="none">
+   <jasperXMLData>
+     <resultSet id="RS_0" numrows="4" numcols="6">
+       <dataRow number="0">
+         <dataCol name="codlin">TRP-17</dataCol>
+         <dataCol name="desclin">Señal de tráfico autovía</dataCol>
+         <dataCol name="uds">2</dataCol>
+         <dataCol name="precio_uni">151,50</dataCol>
+         <dataCol name="dto">0</dataCol>
+         <dataCol name="importe_lin">303,00</dataCol>
+       </dataRow>
+       <dataRow number="1">
+         <dataCol name="codlin">FR-93</dataCol>
+         <dataCol name="desclin">Matrícula ferrocarril</dataCol>
+         <dataCol name="uds">1</dataCol>
+         <dataCol name="precio_uni">55,50</dataCol>
+         <dataCol name="dto">0</dataCol>
+         <dataCol name="importe_lin">55,50</dataCol>
+       </dataRow>
+       <dataRow number="2">
+         <dataCol name="codlin">L3</dataCol>
+         <dataCol name="desclin">La descripción de la línea 3</dataCol>
+         <dataCol name="uds">1</dataCol>
+         <dataCol name="precio_uni">333,33</dataCol>
+         <dataCol name="dto">0</dataCol>
+         <dataCol name="importe_lin">333,33</dataCol>
+       </dataRow>
+       <dataRow number="3">
+         <dataCol name="codlin">L4</dataCol>
+         <dataCol name="desclin">La descripción de la línea 4</dataCol>
+         <dataCol name="uds">1</dataCol>
+         <dataCol name="precio_uni">4.444,44</dataCol>
+         <dataCol name="dto">0</dataCol>
+         <dataCol name="importe_lin">4.444,44</dataCol>
+       </dataRow>
+     </resultSet>
+   </jasperXMLData>
+ </jasperDataSource>
+ <resultFileName fileName="/tmp/InformeDBParams_W3uTAX.pdf" fileType="pdf"/>
+ <jasperParams numparams="0">
+ </jasperParams>
+</llamadaJasper> 

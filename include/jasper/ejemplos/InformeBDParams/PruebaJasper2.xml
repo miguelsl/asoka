@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE llamadaJasper [   
+	<!ELEMENT llamadaJasper (jasperFile, jasperDataSource, resultFileName, jasperParams)? >
+	<!ATTLIST llamadaJasper id ID #REQUIRED>
+	
+	<!ELEMENT jasperFile EMPTY>
+	<!ATTLIST jasperFile fileName CDATA #REQUIRED>
+	
+	<!ELEMENT jasperDataSource (jasperDBOptions|jasperXMLData)? >
+	<!ATTLIST jasperDataSource type (sgbd | xml | none) "sgbd">
+	
+	<!ELEMENT jasperDBOptions (dbType, dbHost, dbPort, dbDatabase, dbUser, dbPassword)? >
+	<!ATTLIST jasperDBOptions 
+		jdbc CDATA #IMPLIED
+		driver CDATA #IMPLIED
+		>
+	<!ELEMENT dbType EMPTY>
+	<!ATTLIST dbType
+		php CDATA #IMPLIED
+		java CDATA #IMPLIED
+		>
+	<!ELEMENT dbHost ANY>
+	<!ELEMENT dbPort ANY>
+	<!ELEMENT dbDatabase ANY>
+	<!ELEMENT dbUser ANY>
+	<!ELEMENT dbPassword ANY>
+	
+	<!ELEMENT jasperXMLData (resultSet)>
+	<!ELEMENT resultSet (dataRow*)>
+	<!ATTLIST resultSet
+		id     		ID		#REQUIRED
+		numrows		CDATA	#IMPLIED
+		numcols		CDATA	#IMPLIED>
+		
+	<!ELEMENT dataRow (dataCol+)>
+	<!ATTLIST dataRow
+		number		CDATA	#REQUIRED>
+	
+	<!ELEMENT dataCol (#PCDATA)>
+	<!ATTLIST dataCol
+		name			CDATA	#REQUIRED
+	>	
+	
+	<!ELEMENT jasperParams (jParam*)>
+	<!ATTLIST jasperParams
+		numparams	CDATA	#IMPLIED>
+		
+	<!ELEMENT jParam ANY>
+	<!ATTLIST jParam
+		name	CDATA	#REQUIRED
+		type	CDATA	#REQUIRED
+		>
+	
+	<!ELEMENT resultFileName EMPTY>
+	<!ATTLIST resultFileName
+		fileName CDATA #REQUIRED
+		fileType (pdf | rtf | odt) "pdf">
+]>
+<llamadaJasper id="Pruebajasper2">
+  <jasperFile fileName="./ejemplos/InformeBDParams/TribunalParams.jasper" />
+  <jasperDataSource type="sgbd" >
+	<jasperDBOptions driver="org.postgresql.Driver" jdbc="jdbc:postgresql://dolores.coput.gva.es:5432/marte">
+ 		<dbType php="pgsql" java="org.postgresql.Driver"/>
+	    <dbHost>dolores.coput.gva.es</dbHost>
+	    <dbPort>5432</dbPort>
+    	<dbDatabase>marte</dbDatabase>
+	    <dbUser>ddm_ae</dbUser>
+    	<dbPassword>ddmae</dbPassword>
+    </jasperDBOptions>
+  </jasperDataSource>
+  <resultFileName fileName="/tmp/TribunalParams_xxxx.pdf" fileType="pdf"/>  
+  <jasperParams numparams = '2' >
+		<jParam name="ParamActivo" type="String">S</jParam>
+		<jParam name="IdMaximo" type="Integer">5</jParam>
+  </jasperParams>
+</llamadaJasper>

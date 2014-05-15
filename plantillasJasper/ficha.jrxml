@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="342"/>
+	<subDataset name="dataset1"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Users/miguel/Documents/Listados/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tasoka_animales.`id` AS id,
+     tasoka_animales.`estado` AS estado,
+     tasoka_animales.`raza` AS raza,
+     tasoka_animales.`nombre` AS nombre,
+     tasoka_animales.`sexo` AS sexo,
+     tasoka_animales.`color` AS color,
+     tasoka_animales.`alto` AS alto,
+     tasoka_animales.`largo` AS largo,
+     tasoka_animales.`peso` AS peso,
+     tasoka_animales.`tamanyo` AS tamanyo,
+     tasoka_animales.`fecha_nacimiento` AS fecha_nacimiento,
+     tasoka_animales.`fecha_entrada` AS fecha_entrada,
+     tasoka_animales.`procedencia` AS procedencia,
+     tasoka_animales.`chip` AS chip,
+     tasoka_animales.`chip_numero` AS chip_numero,
+     tasoka_animales.`pasaporte` AS pasaporte,
+     tasoka_animales.`pasaporte_numero` AS pasaporte_numero,
+     tasoka_animales.`castrado` AS castrado,
+     tasoka_animales.`historia` AS historia,
+     tasoka_animales.`caracter` AS caracter,      max(tasoka_historial_desparasitacion.fecha_desparasitacion) AS `fecha_desparasitacion`,
+max(tasoka_historial_vacunacion.fecha_vacuna) as `fecha_vacunacion`,
+max(tasoka_historial_analitica.fecha) as `fecha_analitica`
+ FROM `tasoka_animales`
+left join `tasoka_historial_desparasitacion` on (tasoka_animales.id=tasoka_historial_desparasitacion.id_animal)
+left join  `tasoka_historial_vacunacion` on (tasoka_animales.id=tasoka_historial_vacunacion.id_animal)
+left join  `tasoka_historial_analitica` on (tasoka_animales.id=tasoka_historial_analitica.id_animal)
+where tasoka_animales.id='1']]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="raza" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="color" class="java.lang.String"/>
+	<field name="alto" class="java.lang.Integer"/>
+	<field name="largo" class="java.lang.Integer"/>
+	<field name="peso" class="java.lang.Double"/>
+	<field name="tamanyo" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.sql.Date"/>
+	<field name="fecha_entrada" class="java.sql.Date"/>
+	<field name="procedencia" class="java.lang.String"/>
+	<field name="chip" class="java.lang.String"/>
+	<field name="chip_numero" class="java.lang.String"/>
+	<field name="pasaporte" class="java.lang.String"/>
+	<field name="pasaporte_numero" class="java.lang.String"/>
+	<field name="castrado" class="java.lang.String"/>
+	<field name="historia" class="java.lang.String"/>
+	<field name="caracter" class="java.lang.String"/>
+	<field name="fecha_desparasitacion" class="java.sql.Date"/>
+	<field name="fecha_vacunacion" class="java.sql.Date"/>
+	<field name="fecha_analitica" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="137" backcolor="#FFCC66"/>
+			</frame>
+			<image>
+				<reportElement x="25" y="0" width="500" height="128"/>
+				<imageExpression><![CDATA["/Users/miguel/Sites-Folder/igep/custom/asoka/images/logos/logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="565" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="565" backcolor="#FFCC66"/>
+				<staticText>
+					<reportElement x="0" y="310" width="117" height="12"/>
+					<box leftPadding="3"/>
+					<textElement/>
+					<text><![CDATA[Datos de la Analítica:]]></text>
+				</staticText>
+			</frame>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="10" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="25" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{raza}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="25" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Raza:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="40" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="55" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{color}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="55" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Color:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="70" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tamanyo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="71" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Tamaño:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="85" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alto}+ " cm. x "+$F{largo}+" cm."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="85" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Medidas:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="100" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso}+ " Kg."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Peso:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="115" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="115" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Chip:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="130" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasaporte}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Pasaporte:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="145" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_nacimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="145" width="117" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Fecha de nacimiento:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="160" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_entrada}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="160" width="117" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Fecha de entrada:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="175" width="122" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{procedencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="175" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Procedencia:]]></text>
+			</staticText>
+			<image hAlign="Right">
+				<reportElement x="303" y="10" width="216" height="258"/>
+				<imageExpression><![CDATA["/Users/miguel/Dropbox/Miguel/Biblioteca/Davey Shafik/Zend PHP 5 certification study guide (6)/cover.jpg"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="217" y="288" width="308" height="124"/>
+				<box topPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="7"/>
+					<paragraph firstLineIndent="3" leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{historia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="217" y="434" width="308" height="124"/>
+				<box topPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="7"/>
+					<paragraph firstLineIndent="3" leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caracter}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="217" y="272" width="100" height="12"/>
+				<textElement/>
+				<text><![CDATA[Historia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="419" width="100" height="12"/>
+				<textElement/>
+				<text><![CDATA[Caracter:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="283" width="117" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Castrado/Esterilizada:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="283" width="23" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{castrado}=='S' ? "Si" : "No" )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="253" width="100" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Desparasitado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="268" width="53" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Vacunado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="298" width="117" height="12"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[Analítica:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="253" width="23" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{fecha_desparasitacion}==null ? "No" : "Si" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="268" width="23" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{fecha_vacunacion}==null ? "No" : "Si" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="120" y="298" width="23" height="12"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{fecha_analitica}==null ? "No" : "Si" )]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement isPrintRepeatedValues="false" mode="Opaque" x="13" y="334" width="175" height="222"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sr_id">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sr_fecha_analitica">
+					<subreportParameterExpression><![CDATA[$F{fecha_analitica}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "resultados_analitica.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="100" backcolor="#FFCC66"/>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="13" width="555" height="87"/>
+				<box leftPadding="3"/>
+				<textElement/>
+				<text><![CDATA[www.asokaelgrande.org
+
+Teléfonos: (+34) 625589523; (+34) 649 876 523 y (+34) 635652052 (sólo gatos). Horario telf: de 10h a 13h y de 17h a 20h. Fines de semana y festivos de 10h a 13h.
+
+Donativos y transferencias en la cuenta española de Cajamar Rural: 3058 - 2596 - 92 - 2810010640.
+Desde fuera de España: IBAN: ES87 3058 2596 9228 1001 064 BIC: CCRIES2A.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

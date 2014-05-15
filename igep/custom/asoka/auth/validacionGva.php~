@@ -1,0 +1,83 @@
+<?php
+/**
+ * Validacion de usuarios: comprueba en cada acceso si el usuario puede entrar
+ * En caso de no validado, muestra enlace a un php de igep para validarse.
+ * 
+ * Es una clase estática. 
+ *
+ * @package	gvHIDRA
+ */
+
+require_once 'AuthGva.php';
+
+class validacion 
+{	
+	
+   /**
+    * Validación normal, con todas las comprobaciones
+    * Se invoca al inicio de la aplicacion y carga la informacion del usuario en la sesion
+    *
+    * @access public
+    */
+
+static function valida($apli, $sesion=TRUE) 
+    {    
+        global $options_gva;
+        global $options;
+        $auth_container = new AuthGva();
+
+        //$aut = new Auth('IMAP',$options_gva,'',false);
+
+$aut = new Auth('MDB2', $options, 'loginFunctiondd');
+
+        $aut->setSessionName($apli);
+        $aut->start();
+        if (!$aut->checkAuth())
+            exit('No estás validado; Vuelve a la pantalla de conexión.');
+        
+        if (!isset($_SESSION[$apli]['usuario'])){
+            if (!isset($_SESSION[$apli]))
+                $_SESSION[$apli] = array();
+         if( $aut->getAuthData('activo')!='S') {
+                 $aut->logout();
+                exit('No estás activo; <a href="javascript:history.back(1)">Vuelve</a> a la pantalla de conexión.');
+               
+            }
+            $_SESSION[$apli]['usuario']['usuario'] = $aut->getUsername();
+			$_SESSION[$apli]['usuario']['nombre']=$aut->getAuthData('nombre');
+			$_SESSION[$apli]['usuario']['rol']=$aut->getAuthData('rol');
+            $_SESSION[$apli] = $auth_container->postLogin($_SESSION[$apli], $aut);
+            $kk=$_SERVER['SERVER_NAME'];
+            $_SESSION['validacion'] = array(
+                    'bd'=>$kk,    // servidor bd
+                    'server'=>$kk,        // servidor web
+                );
+                
+            $auth_container->checkData($_SESSION, $apli);
+       
+        }
+    }
+
+	/*static function valida($apli, $sesion=TRUE) 
+	{	
+		$auth_container = new AuthBasic();
+		$aut = new Auth($auth_container,'','',false);
+		$aut->setSessionName($apli);
+		$aut->start();
+		if (!$aut->checkAuth())
+			exit('No estás validado; Vuelve a la pantalla de conexión.');
+
+		if (!isset($_SESSION[$apli]['usuario'])){
+			if (!isset($_SESSION[$apli]))
+				$_SESSION[$apli] = array();
+			$_SESSION[$apli]['usuario']['usuario'] = $aut->getUsername();
+			$_SESSION[$apli] = $auth_container->postLogin($_SESSION[$apli]);
+			$_SESSION['validacion'] = $auth_container->getDatos();			
+
+			$auth_container->checkData($_SESSION, $apli);
+		}
+	}*/
+
+}
+
+?>

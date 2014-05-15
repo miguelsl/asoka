@@ -1,0 +1,10 @@
+<chapter id="introduccion">
+   <title>Introducción</title>
+    <para>Lo que se pretende con este manual es dar una pequeña explicación 
+     de la interfaz que tendrán las aplicaciones desarrolladas siguiendo la Guía de Estilo. 
+    </para>
+    <para>Dado que podemos tener diferentes funcionalidades aqui explicaremos
+    lo que sea genérico para todos. Que 
+    funcionalidad tienen los botones, pestañas..., significado de
+    las distintas zonas de la pantalla...</para>
+</chapter>

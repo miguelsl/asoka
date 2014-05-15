@@ -1,0 +1,28 @@
+<chapter id="pInicial">
+    <title>Pantalla inicio</title>
+    <para>La pantalla inicial está dividida en dos zonas. </para>
+    <para>Una superior que contiene el título de la aplicación y el usuario
+    que la está utilizando, y en la inferior aparecen tres menús distribuidos
+    en columnas. Estos menús son:</para>
+    <itemizedlist>
+    	<listitem>
+	   <para>Módulos principales: Módulos que componen la aplicación u
+	   opciones principales</para>
+        </listitem>
+    	<listitem>
+           <para>Herramientas auxiliares: Utilidades varias</para>
+        </listitem>
+        <listitem>
+           <para>Administración sistema: Documentos y herramientas útiles para
+           la aplicación (manuales, ...)</para>
+        </listitem>
+    </itemizedlist>
+ <figure>
+      <title>Pantalla Inicio</title>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="../img/vinicio.png" format="png">
+	</imageobject>
+      </mediaobject>
+    </figure>
+</chapter>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project name="jasper" default="desplegar.produccion" basedir=".">
+
+	<!-- **************************************************************************** -->
+	<!-- ****************** DEFINICIÓN DE LAS PROPERTIES GLOBALES ******************* -->
+	<!-- **************************************************************************** -->
+	
+	<!-- Directorio donde están los fuentes del proyecto Jasper recien importados -->
+	<property name="dir.jasper" value="."/>
+	
+	
+	<!--
+	Tarea Principal:
+		Comprueba que NO estamos desarrollando el proyecto Jasper, es decir, que
+		estamos un despliegue del proyecto Jasper como subproyecto de otro. 
+	-->
+	<target name="post.desplegar" description="Refina el despliege del modulo Jasper" if="post.desplegar.refinar">
+		<echo message="Comprobamos si debemos realizar el despliegue de Jasper..." />
+		<!-- Asumimos que si el directorio superior es "include" se nos está utilizando -->
+		<echo>${ant.project.name}</echo>
+		<!-- available property="somos.subproyecto" file="../include/" type="dir" /-->
+	</target>
+	
+	
+	
+	<target name="desplegar.produccion" description="Refina el despliege del proyecto Jasper" if="somos.subproyecto" >
+		<!-- Directorio de ejemplos -->
+		<property name="dir.jasper.ejemplos" value="${dir.jasper}/ejemplos"/>
+		
+		<!-- Directorios de desarrollo del proyecto -->
+		<property name="dir.jasper.ejemplos" value="${dir.jasper}/ejemplos"/>
+		<property name="dir.jasper.JavaToJasper" value="${dir.jasper}/JavaToJasper"/>		
+		<property name="dir.jasper.JavaToJasperFuenteDatosPropia" value="${dir.jasper}/JavaToJasperFuenteDatosPropia"/>
+		<property name="dir.jasper.JavaToJasperGrafico" value="${dir.jasper}/JavaToJasperGrafico"/>
+		<property name="dir.jasper.JavaToJasperParamsOpcionales" value="${dir.jasper}/JavaToJasperParamsOpcionales"/>
+		<property name="dir.jasper.JavaToJasperSinFuenteDatos" value="${dir.jasper}/JavaToJasperSinFuenteDatos"/>
+		<property name="dir.jasper.JavaToJasperSubReport" value="${dir.jasper}/JavaToJasperSubReport"/>
+		<property name="dir.jasper.JavaToJasperXMLData" value="${dir.jasper}/JavaToJasperXMLData"/>
+
+
+		<!-- **************************************************************************** -->
+		<!-- ********************* Fin de definición de Properties ********************** -->
+		<!-- **************************************************************************** -->
+		
+		<!-- Eliminamos todos los ficheros y directorio innecesarios para el uso de jasper -->
+		<echo message="Eliminando ficheros innecesarios..."/>
+		<echo message="Moviendo los ficheros anteriores al directorio de Seguridad..."/>
+		<delete includeemptydirs="true">
+			<fileset dir="${dir.jasper.ejemplos}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.JavaToJasper}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.JavaToJasperFuenteDatosPropia}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.JavaToJasperGrafico}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.ejemplos}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.ejemplos}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.ejemplos}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.ejemplos}" casesensitive="yes" />
+			<fileset dir="${dir.jasper.ejemplos}" casesensitive="yes" />
+		</delete>
+	    
+		<!--
+		<move todir="${dir.dest.cod.fuente}/${nombre.aplicacion}.SEGU" overwrite="yes">
+    	<fileset dir="${dir.dest.cod.fuente}/${nombre.aplicacion}"/>
+		</move>		
+		-->
+		
+		<!-- Mas "ejemplos de cosas" -->
+		<!--
+		<echo message="Copiando los fuentes al directorio ${dir.dest.cod.fuente}"/>
+		<copy todir="${dir.dest.cod.fuente}/${nombre.aplicacion}" overwrite="yes"> 
+    	<fileset dir="${dir.orig.cod.fuente}"/>
+		</copy>
+		-->
+		
+		<!-- Reemplazamos las cadenas relativas a la IP del servidor -->
+		<!-- Mas "ejemplos de cosas" -->
+		<!--
+		<echo message="Reemplazando las IPs..."/>
+		<replace dir="${dir.dest.cod.fuente}/${nombre.aplicacion}" token="${ip.desarrollo}" value="${ip.produccion}"/>			
+		-->
+		
+		<!-- ********************* Fin de las acciones a ejecutar *********************** -->
+		<!-- **************************************************************************** -->		
+	</target>
+	
+	
+</project>

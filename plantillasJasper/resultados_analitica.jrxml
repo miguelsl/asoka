@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resultados_analitica" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sr_id" class="java.lang.Integer"/>
+	<parameter name="sr_fecha_analitica" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     tasoka_analitica.`id_animal` AS tasoka_analitica_id_animal,
+     tasoka_analitica.`fecha` AS tasoka_analitica_fecha,
+     tasoka_analitica.`resultado` AS tasoka_analitica_resultado,
+     tasoka_bacteria.`nombre` AS tasoka_bacteria_nombre
+FROM
+     `tasoka_bacteria` tasoka_bacteria INNER JOIN `tasoka_analitica` tasoka_analitica ON tasoka_bacteria.`id` = tasoka_analitica.`id_bacteria`
+where tasoka_analitica.id_animal=$P{sr_id} and tasoka_analitica.fecha=$P{sr_fecha_analitica}]]>
+	</queryString>
+	<field name="tasoka_analitica_id_animal" class="java.lang.Integer"/>
+	<field name="tasoka_analitica_fecha" class="java.sql.Date"/>
+	<field name="tasoka_analitica_resultado" class="java.lang.String"/>
+	<field name="tasoka_bacteria_nombre" class="java.lang.String"/>
+	<group name="tasoka_analitica_id_animal">
+		<groupExpression><![CDATA[$F{tasoka_analitica_id_animal}]]></groupExpression>
+	</group>
+	<group name="tasoka_analitica_fecha">
+		<groupExpression><![CDATA[$F{tasoka_analitica_fecha}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="100" y="0" width="100" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sr_fecha_analitica}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement x="15" y="0" width="100" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["- "+$F{tasoka_bacteria_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="0" width="100" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tasoka_analitica_resultado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

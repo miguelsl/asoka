@@ -1,0 +1,193 @@
+<chapter id="elemPanel">
+ 	<title>Elementos de los paneles</title>
+ 	<para>La función de los paneles es organizar la información en la zona
+ 	de trabajo. Intentaremos agrupar esta información como un conjunto
+ 	homogeneo de datos, por eso aparecerán tantos paneles como grupos
+ 	de información, aunque se recomienda limitar a uno o dos por
+ 	pantalla.</para>
+        <sect1 id="botonToolTip">
+ 		<title>6.1 BotonToolTip</title>
+ 		<para>Este tipo de botones representarán a aquellas acciones o
+ 		utilidades que trabajan sobre un panel a nivel de
+ 		pantalla, nunca sobre la Base de Datos.</para>
+                <para>Encontramos dos tipos de Botones ToolTip según su
+ 		ubicación: </para>
+                <blockquote>
+                  <para>Los que encontramos en la cabecera del panel, situados
+                  a la derecha. Estos actuan sobre todo el panel. Ejemplos:
+                  Modificar, Insertar, Limpiar, ... </para> 
+                  <para>Los que encontramos repartidos por el panel y se
+                  utilizan para completar información de algun
+                  campo. Aparecen situados a la derecha del campo al que
+                  afectan. Ejemplos: Ventana Selección, Calendario, ...</para>
+                </blockquote>
+                <para>Veamos una pequeña descripción de funcionamiento de los
+                botones ToolTip más comunes: </para>
+                <blockquote>
+                <para>- 
+                  <inlinemediaobject>
+	             <imageobject>
+	              <imagedata align="center" fileref="../img/01.gif"
+                       format="gif">
+                     </imageobject>
+                  </inlinemediaobject>
+                  Nuevo: Crea un nuevo registro. En el caso de un
+                  mantenimiento tipo 'tabla' pulsar este botón indica que se
+                  activen las filas restantes para finalizar la tabla o las
+                  filas de la página siguiente en el caso de estar completa la
+                  última.
+                  Si el mantenimiento es tipo 'ficha' aparecerá una ficha en
+                  blanco donde introduciremos los valores del registro a
+                  insertar.
+                </para>
+                <para>- 
+                  <inlinemediaobject>
+	             <imageobject>
+	              <imagedata align="center" fileref="../img/02.gif"
+                       format="gif">
+                     </imageobject>
+                  </inlinemediaobject>
+                  Modificar: Activa los campos para poder modificar un
+                  registro.</para>
+                <para>- 
+                  <inlinemediaobject>
+	             <imageobject>
+	              <imagedata align="center" fileref="../img/03.gif"
+                       format="gif">
+                     </imageobject>
+                  </inlinemediaobject>
+                  Eliminar: En el caso de mantenimiento tipo 'tabla' se marcarán
+                  como eliminados los registros seleccionados, estos se
+                  seleccionan activando el checkbox que se encuentra al
+                  principio de la fila. Y en el caso de mantenimiento tipo
+                  'ficha' el registro donde nos encontremos a la hora de pulsar
+                  el botón es el que pasará a estado de borrado. 
+                </para>
+                <para>- 
+                  <inlinemediaobject>
+	             <imageobject>
+	              <imagedata align="center" fileref="../img/04.gif"
+                       format="gif">
+                     </imageobject>
+                  </inlinemediaobject>
+                  Restaurar: Este botón ToolTip tiene dos acciones: Refrescar
+                  o vaciar. En el caso de vaciar el pulsarlo supone que todos
+                  los campos del registro aparezcan vacios. Y refrescar supone
+                  que aparezcan los valores del registro anteriores a la
+                  modificación.   
+                </para>
+                </blockquote>
+                
+ 	</sect1>
+ 	<sect1 id="boton">
+ 		<title>6.2 Botones</title>
+                <para>Estos botones son los que aparecen en la barra inferior
+                del panel. Realizan acciones que afectan a la base de datos o
+                lanzan procesos en otros paneles con la información del panel
+                actual.</para>
+                <para>En estos botones aparecerá un texto que deberá ser lo
+                mas significativo posible con relación a la acción a
+                ejecutar.</para>
+                <mediaobject>
+                 <imageobject>
+                  <imagedata fileref="../img/botones.png" format="png">
+                 </imageobject>
+                </mediaobject>
+        </sect1>
+        <sect1 id="solapas">
+                <title>6.3 Pestañas Agrupadoras</title>
+                <para>Este elemento se utilizará para agrupar en un mismo
+                panel información relacionada. Serán necesarias cuando haya
+                que mostrar mucha información que implique que el panel se
+                haga demasiado largo. El título de la pestaña nos indicará el
+                tipo de la información que contendrá.</para>
+                <figure>
+                  <title>Ejemplo pestañas agrupadoras</title>
+                    <mediaobject>
+	             <imageobject>
+	               <imagedata fileref="../img/ejemploPestanyas.gif" format="gif">
+	             </imageobject>
+                    </mediaobject>
+                </figure>
+        </sect1>
+        <sect1 id="pestanyas">
+                <title>6.4 Pestañas de modos de trabajo</title>
+                <para>Nos indican los modos de trabajo que se
+                disponen para el mantenimiento en el que nos encontramos. Los
+                modos de trabajo no es más que las distintas formas que
+                tenemos de representar la información con la que estamos
+                trabajando.
+                </para>
+                <para>Siempre aparecen a la derecha de los paneles y sólo se
+                componen de una imagen que representa el modo de trabajo. El
+                nombre se muestra como texto alternativo.</para>
+                <figure>
+                  <title>Ejemplo pestañas de modos de trabajo</title>
+                    <mediaobject>
+	             <imageobject>
+	               <imagedata fileref="../img/pestanyas.png" format="png">
+	             </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>Los modos de trabajo utilizados son los
+                siguientes: </para>
+                <blockquote>
+                <para> -
+                <inlinemediaobject>
+	         <imageobject>
+	          <imagedata align="center" fileref="../img/pfil.png"
+                      format="png">
+                  </imageobject>
+                </inlinemediaobject>
+                Modo buscar: Por defecto cualquier ventana se abre
+                en este modo de trabajo, a menos que se
+                indique lo contrario. Aparecerá un panel con los campos que
+                se consideren apropiados para encontrar la información. </para>
+                <para> -
+                <inlinemediaobject>
+	         <imageobject>
+	          <imagedata align="center" fileref="../img/pedi.png"
+                      format="png">
+                  </imageobject>
+                </inlinemediaobject>
+                Modo ficha: Este modo se utiliza para mostrar
+                registros con mucha información. Se accede a él directamente
+                después de la búsqueda o desde el modo 'tabla' para ver
+                en profundidad los datos.</para>
+                <para> -
+                <inlinemediaobject>
+	         <imageobject>
+	          <imagedata align="center" fileref="../img/plis.png"
+                      format="png">
+                  </imageobject>
+                </inlinemediaobject>
+                Modo tabla: Muestra la información en forma de lista.</para>
+                </blockquote>
+        </sect1>
+        <sect1 id="paginador">
+                <title>6.5 Paginador</title>
+                <para>En la barra inferior del panel aparecerá un elemento
+                paginador, que como su propio nombre indica, nos permitirá ir
+                cambiando de página. </para>
+                <para>En el caso de un panel ficha y cuando la información a mostrar
+                corresponda a más de un registro, con el paginador podremos ir
+                moviéndonos por los distintos registros. En este caso, cuando
+                se modifique algún dato de algún registro, aparecerá una lista desplegable en la que se irán
+                acumulando las páginas donde hay cambios para informar al
+                usuario antes de que grabe en la BD. El registro que ha sido
+                modificado también incorpora al lado del paginador una imagen
+                de alerta.</para>
+               <para>En el caso de un panel de tipo tabla, el paginador es útil
+                cuando el número de registros a mostrar es superior al número
+                de filas que aparecen en pantalla, por lo que se generarán más
+                páginas con el resto de registros.</para>
+                <figure>
+                  <title>Ejemplo paginador</title>
+                    <mediaobject>
+	             <imageobject>
+	               <imagedata fileref="../img/paginador.png" format="png">
+	             </imageobject>
+                    </mediaobject>
+                </figure>
+        </sect1>
+</chapter>

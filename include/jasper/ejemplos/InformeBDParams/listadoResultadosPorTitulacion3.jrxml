@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="listadoResultadosPorTitulacion3"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="FechaConv" isForPrompting="true" class="java.util.Date">
+		<defaultValueExpression ><![CDATA[new Date("12/11/04")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CodTit" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[null]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[SELECT t1.*,COALESCE(t3.si,0) as "aptos",COALESCE(t5.no,0) as "noaptos",
+tddm_titulacion.desctitcas,tddm_asignatura.descasigcas FROM 
+(((((SELECT 
+tddm_solicitud.codtit as "codtit",
+tddm_solicitud.codasig as "codasig",
+CAST ( tddm_solicitud.fecha_conv AS date ) as "fecha_conv",
+count(*) as "cantidad"
+FROM tddm_solicitud
+WHERE tddm_solicitud.codtit = COALESCE($P{CodTit},tddm_solicitud.codtit)
+AND tddm_solicitud.fecha_conv = COALESCE(CAST($P{FechaConv} AS date ),tddm_solicitud.fecha_conv)
+GROUP BY tddm_solicitud.codtit,tddm_solicitud.fecha_conv,tddm_solicitud.codasig
+) As t1
+LEFT JOIN ( SELECT t2.codtit,t2.codasig,t2.fecha_conv,count(*) as "si"
+	    FROM tddm_solicitud as t2
+	    WHERE t2.nota='APTO' AND t2.codtit = COALESCE($P{CodTit},t2.codtit)
+		AND t2.fecha_conv = COALESCE(CAST($P{FechaConv} AS date ),t2.fecha_conv)
+	    GROUP BY t2.codtit,t2.fecha_conv,t2.codasig) as t3
+ON t1.codtit=t3.codtit AND t1.codasig=t3.codasig AND t1.fecha_conv=t3.fecha_conv)
+LEFT JOIN ( SELECT t4.codtit,t4.codasig,t4.fecha_conv,count(*) as "no"
+	    FROM tddm_solicitud as t4
+	    WHERE t4.nota='NO APTO' AND t4.codtit = COALESCE($P{CodTit},t4.codtit)
+		AND t4.fecha_conv = COALESCE(CAST($P{FechaConv} AS date ),t4.fecha_conv)
+	    GROUP BY t4.codtit,t4.fecha_conv,t4.codasig) as t5
+ON t1.codtit=t5.codtit AND t1.codasig=t5.codasig AND t1.fecha_conv=t5.fecha_conv)
+LEFT JOIN tddm_titulacion ON tddm_titulacion.codtit=t1.codtit)
+LEFT JOIN tddm_asignatura ON tddm_asignatura.codasig = t1.codasig)
+ORDER BY t1.codtit, t1.fecha_conv]]></queryString>
+
+	<field name="codtit" class="java.lang.String"/>
+	<field name="codasig" class="java.lang.String"/>
+	<field name="fecha_conv" class="java.sql.Date"/>
+	<field name="cantidad" class="java.lang.Long"/>
+	<field name="aptos" class="java.lang.Long"/>
+	<field name="noaptos" class="java.lang.Long"/>
+	<field name="desctitcas" class="java.lang.String"/>
+	<field name="descasigcas" class="java.lang.String"/>
+
+	<variable name="SUM_cantidad_1" class="java.lang.Long" resetType="Group" resetGroup="Convocatoria" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<variable name="SUM_noaptos_1" class="java.lang.Long" resetType="Group" resetGroup="Convocatoria" calculation="Sum">
+		<variableExpression><![CDATA[$F{noaptos}]]></variableExpression>
+	</variable>
+	<variable name="SUM_aptos_1" class="java.lang.Long" resetType="Group" resetGroup="Convocatoria" calculation="Sum">
+		<variableExpression><![CDATA[$F{aptos}]]></variableExpression>
+	</variable>
+	<variable name="COUNT_Porcent_aptos" class="java.lang.Double" resetType="Group" resetGroup="Convocatoria" calculation="Average">
+		<variableExpression><![CDATA[new Double($F{aptos}.doubleValue() / $F{cantidad}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="COUNT_Porcent_noaptos" class="java.lang.Double" resetType="Group" resetGroup="Convocatoria" calculation="Average">
+		<variableExpression><![CDATA[new Double($F{noaptos}.doubleValue() / $F{cantidad}.doubleValue())]]></variableExpression>
+	</variable>
+
+		<group  name="Titulacion" isStartNewPage="true" isReprintHeaderOnEachPage="true" >
+			<groupExpression><![CDATA[$F{codtit}]]></groupExpression>
+			<groupHeader>
+			<band height="38"  isSplitAllowed="false" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="25"
+						y="7"
+						width="482"
+						height="17"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["TITULACIÓN: " + $F{desctitcas}]]></textFieldExpression>
+				</textField>
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="11"  isSplitAllowed="false" >
+			</band>
+			</groupFooter>
+		</group>
+		<group  name="Convocatoria" isStartNewPage="true" isReprintHeaderOnEachPage="true" >
+			<groupExpression><![CDATA[$F{fecha_conv}]]></groupExpression>
+			<groupHeader>
+			<band height="47"  isSplitAllowed="false" >
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="90"
+						y="5"
+						width="97"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{fecha_conv}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="7"
+						y="5"
+						width="70"
+						height="15"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Convocatoria:]]></text>
+				</staticText>
+				<rectangle radius="0" >
+					<reportElement
+						mode="Opaque"
+						x="1"
+						y="30"
+						width="534"
+						height="17"
+						forecolor="#000000"
+						backcolor="#999999"
+						key="element-1"/>
+					<graphicElement stretchType="NoStretch" pen="Thin"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="0"
+						y="30"
+						width="193"
+						height="16"
+						forecolor="#FFFFFF"
+						key="element-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font fontName="" size="12"/>
+					</textElement>
+				<text><![CDATA[ASIGNATURAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="192"
+						y="30"
+						width="78"
+						height="16"
+						forecolor="#FFFFFF"
+						key="element-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="" size="12"/>
+					</textElement>
+				<text><![CDATA[Presentados]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="269"
+						y="30"
+						width="66"
+						height="16"
+						forecolor="#FFFFFF"
+						key="element-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="" size="12"/>
+					</textElement>
+				<text><![CDATA[Aptos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="399"
+						y="30"
+						width="66"
+						height="16"
+						forecolor="#FFFFFF"
+						key="element-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="" size="12"/>
+					</textElement>
+				<text><![CDATA[No aptos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="334"
+						y="30"
+						width="66"
+						height="16"
+						forecolor="#FFFFFF"
+						key="element-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="" size="12"/>
+					</textElement>
+				<text><![CDATA[% Aptos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="464"
+						y="30"
+						width="71"
+						height="16"
+						forecolor="#FFFFFF"
+						key="element-7"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="" size="12"/>
+					</textElement>
+				<text><![CDATA[% No aptos]]></text>
+				</staticText>
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="30"  isSplitAllowed="false" >
+				<line direction="BottomUp">
+					<reportElement
+						x="3"
+						y="2"
+						width="530"
+						height="1"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="190"
+						y="8"
+						width="78"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$V{SUM_cantidad_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="267"
+						y="8"
+						width="66"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$V{SUM_aptos_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="397"
+						y="8"
+						width="66"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$V{SUM_noaptos_1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="332"
+						y="8"
+						width="66"
+						height="15"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{COUNT_Porcent_aptos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="462"
+						y="8"
+						width="71"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{COUNT_Porcent_noaptos}]]></textFieldExpression>
+				</textField>
+				<line direction="BottomUp">
+					<reportElement
+						x="3"
+						y="24"
+						width="530"
+						height="1"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="6"
+						y="8"
+						width="185"
+						height="15"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[TOTALES]]></text>
+				</staticText>
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="1"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="47"  isSplitAllowed="true" >
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="5"
+						y="4"
+						width="230"
+						height="34"
+						key="image-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA["/home/fjmaestre/fjmaestreGardel/cvswrk/JasperCIT/ejemplos/InformeBDParams/logo_horiz_BN.jpg"]]></imageExpression>
+				</image>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="25"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="25"  isSplitAllowed="false" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="190"
+						y="6"
+						width="78"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{cantidad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="267"
+						y="6"
+						width="66"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{aptos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="397"
+						y="6"
+						width="66"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{noaptos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="6"
+						y="6"
+						width="185"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{descasigcas}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="false" evaluationTime="Auto" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="332"
+						y="6"
+						width="66"
+						height="15"
+						key="Porcent_aptos"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[new Double($F{aptos}.doubleValue() / $F{cantidad}.doubleValue())]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="false" evaluationTime="Auto" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="462"
+						y="6"
+						width="71"
+						height="15"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[new Double($F{noaptos}.doubleValue() / $F{cantidad}.doubleValue())]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="11"  isSplitAllowed="false" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="12"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<lastPageFooter>
+			<band height="8"  isSplitAllowed="true" >
+			</band>
+		</lastPageFooter>
+		<summary>
+			<band height="7"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

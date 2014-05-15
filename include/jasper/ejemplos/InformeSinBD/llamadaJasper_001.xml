@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE llamadaJasper [
+<!ELEMENT llamadaJasper (jasperFile , jasperDataSource , resultFileName , jasperParams)?>
+<!ATTLIST llamadaJasper id ID #REQUIRED>
+<!ELEMENT jasperFile EMPTY>
+<!ATTLIST jasperFile fileName CDATA #REQUIRED>
+<!ELEMENT jasperDataSource (jasperDBOptions | jasperXMLData)?>
+<!ATTLIST jasperDataSource type (sgbd | xml | none) "sgbd">
+<!ELEMENT jasperDBOptions (dbType , dbHost , dbPort , dbDatabase , dbUser , dbPassword)?>
+<!ATTLIST jasperDBOptions jdbc CDATA #IMPLIED>
+<!ATTLIST jasperDBOptions driver CDATA #IMPLIED>
+<!ELEMENT dbType EMPTY>
+<!ATTLIST dbType php CDATA #IMPLIED>
+<!ATTLIST dbType java CDATA #IMPLIED>
+<!ELEMENT dbHost ANY>
+<!ELEMENT dbPort ANY>
+<!ELEMENT dbDatabase ANY>
+<!ELEMENT dbUser ANY>
+<!ELEMENT dbPassword ANY>
+<!ELEMENT jasperXMLData (resultSet)>
+<!ELEMENT resultSet (dataRow)*>
+<!ATTLIST resultSet id ID #REQUIRED>
+<!ATTLIST resultSet numrows CDATA #IMPLIED>
+<!ATTLIST resultSet numcols CDATA #IMPLIED>
+<!ELEMENT dataRow (dataCol)+>
+<!ATTLIST dataRow number CDATA #REQUIRED>
+<!ELEMENT dataCol (#PCDATA)>
+<!ATTLIST dataCol name CDATA #REQUIRED>
+<!ELEMENT jasperParams (jParam)*>
+<!ATTLIST jasperParams numparams CDATA #IMPLIED>
+<!ELEMENT jParam ANY>
+<!ATTLIST jParam name CDATA #REQUIRED>
+<!ATTLIST jParam type CDATA #REQUIRED>
+<!ELEMENT resultFileName EMPTY>
+<!ATTLIST resultFileName fileName CDATA #REQUIRED>
+<!ATTLIST resultFileName fileType (pdf | rtf | doc | odf | odt) "pdf">
+]>
+<llamadaJasper id="DisponibMensualXML3.jasper"><!--
+		Este "truco" es la unica forma de que PHP4 pueda validar
+		documentos cuando los crea al vuelo con DOM XML.
+		Esta "plantilla" es por tanto necesaria para trabajar con
+		XML bien formados y válidos.
+	-->
+	<jasperFile fileName="./ejemplos/InformeSinBD/DisponibMensualXML3.jasper"/><jasperDataSource type="xml"><jasperXMLData><resultSet id="listado" numrows="9" numcols="33"><dataRow number="0"><dataCol name="0">N</dataCol><dataCol name="1">N</dataCol><dataCol name="2">N</dataCol><dataCol name="3">N</dataCol><dataCol name="4">N</dataCol><dataCol name="5">N</dataCol><dataCol name="6">N</dataCol><dataCol name="7">N</dataCol><dataCol name="8">N</dataCol><dataCol name="9">N</dataCol><dataCol name="10">N</dataCol><dataCol name="11">N</dataCol><dataCol name="12">Y</dataCol><dataCol name="13">Y</dataCol><dataCol name="14">N</dataCol><dataCol name="15">N</dataCol><dataCol name="16">N</dataCol><dataCol name="17">N</dataCol><dataCol name="18">N</dataCol><dataCol name="19">Y</dataCol><dataCol name="20">Y</dataCol><dataCol name="21">N</dataCol><dataCol name="22">N</dataCol><dataCol name="23">N</dataCol><dataCol name="24">N</dataCol><dataCol name="25">N</dataCol><dataCol name="26">Y</dataCol><dataCol name="27">Y</dataCol><dataCol name="28">N</dataCol><dataCol name="29">N</dataCol><dataCol name="30">N</dataCol><dataCol name="31">N</dataCol><dataCol name="32">N</dataCol></dataRow><dataRow number="1"><dataCol name="0">Cond.</dataCol><dataCol name="1">Tf</dataCol><dataCol name="2">Con</dataCol><dataCol name="3">1</dataCol><dataCol name="4">2</dataCol><dataCol name="5">3</dataCol><dataCol name="6">4</dataCol><dataCol name="7">5</dataCol><dataCol name="8">6</dataCol><dataCol name="9">7</dataCol><dataCol name="10">8</dataCol><dataCol name="11">9</dataCol><dataCol name="12">10</dataCol><dataCol name="13">11</dataCol><dataCol name="14">12</dataCol><dataCol name="15">13</dataCol><dataCol name="16">14</dataCol><dataCol name="17">15</dataCol><dataCol name="18">16</dataCol><dataCol name="19">17</dataCol><dataCol name="20">18</dataCol><dataCol name="21">19</dataCol><dataCol name="22">20</dataCol><dataCol name="23">21</dataCol><dataCol name="24">22</dataCol><dataCol name="25">23</dataCol><dataCol name="26">24</dataCol><dataCol name="27">25</dataCol><dataCol name="28">26</dataCol><dataCol name="29">27</dataCol><dataCol name="30">28</dataCol><dataCol name="31">29</dataCol><dataCol name="32">30</dataCol></dataRow><dataRow number="2"><dataCol name="0">VICENTE BERMELL</dataCol><dataCol name="1">62222</dataCol><dataCol name="2">C1</dataCol><dataCol name="3"> </dataCol><dataCol name="4"> </dataCol><dataCol name="5"> </dataCol><dataCol name="6"> </dataCol><dataCol name="7"> </dataCol><dataCol name="8"> </dataCol><dataCol name="9"> </dataCol><dataCol name="10"> </dataCol><dataCol name="11"> </dataCol><dataCol name="12"> </dataCol><dataCol name="13"> </dataCol><dataCol name="14"> </dataCol><dataCol name="15"> </dataCol><dataCol name="16"> </dataCol><dataCol name="17"> </dataCol><dataCol name="18"> </dataCol><dataCol name="19"> </dataCol><dataCol name="20"> </dataCol><dataCol name="21"> </dataCol><dataCol name="22"> </dataCol><dataCol name="23"> </dataCol><dataCol name="24"> </dataCol><dataCol name="25"> </dataCol><dataCol name="26"> </dataCol><dataCol name="27"> </dataCol><dataCol name="28"> </dataCol><dataCol name="29"> </dataCol><dataCol name="30"> </dataCol><dataCol name="31"> </dataCol><dataCol name="32"> </dataCol></dataRow></resultSet></jasperXMLData></jasperDataSource><resultFileName fileName="/tmp/DisponibMensual_E8RrCU.pdf" fileType="pdf"/><jasperParams numparams="2"><jParam name="periodo" type="String">NOVIEMBRE DE 2007</jParam><jParam name="CadXPath" type="String">/llamadaJasper/jasperDataSource/jasperXMLData/resultSet/dataRow/dataCol</jParam></jasperParams></llamadaJasper>

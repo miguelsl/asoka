@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gvHidraConfig [   
+	<!-- Etiqueta de inicio -->
+	<!ELEMENT gvHidraConfig (
+		applicationName |		
+		appVersion |
+		customTitle |
+		customDirName |
+		templatesCompilationDir |
+		temporalDir |		
+		reloadMappings |		
+		smartyCompileCheck |		
+		logSettings |
+		queryMode |
+		extConfigDir |	
+		DSNZone | smtpServer 
+		)*
+	>	
+	
+	<!-- applicationName
+		Establece el nombre de la aplicación
+	-->
+	<!ELEMENT applicationName (#PCDATA)>
+	
+	<!-- appVersion
+		Establece la versión de la aplicación.
+	-->
+	<!ELEMENT appVersion (#PCDATA)>
+
+	<!-- extConfigDir
+		Establece el directorio de configuracion externa
+	-->
+	<!ELEMENT extConfigDir (#PCDATA)>
+	
+	
+	<!-- customTitle
+		En la barra superior se ha designado un pequeño espacio para
+		un texto personalizado. Dicho texto puede fijarse a través del
+		elemento customTitle
+	-->
+	<!ELEMENT customTitle (#PCDATA)>
+	
+	<!-- templatesCompilationDir
+		Establece el directorio que utilizará Smarty para compilar las TPL
+	-->
+	<!ELEMENT templatesCompilationDir (#PCDATA)>	
+	
+	<!-- temporalDir
+		Establece el directorio temporal para gestion interna del FW (sesiones...)
+	-->
+	<!ELEMENT temporalDir (#PCDATA)>
+	
+	<!-- reloadMappings
+		Indica si se recarga el fichero de mappings en cada petición
+	-->
+	<!ELEMENT reloadMappings (#PCDATA)>
+
+	<!-- smartyCompileCheck
+		Indica si smarty tiene que comprobar si se ha modificado alguna plantilla y en caso afirmativo recargarla
+	-->
+	<!ELEMENT smartyCompileCheck (#PCDATA)>
+	
+	<!-- customDirName
+		Establece el nombre del directorio de customización. Son modificaciones
+		o extensiones	que van a ser comunes a una organización o a varias
+		aplicaciones. Por ejemplo, las extensiones del Framework propias de la CIT
+	-->
+	<!ELEMENT customDirName (#PCDATA)>
+	
+	
+	<!-- logSettings
+		Establece parámetros del LOG, como:
+		- status: El nivel de LOG
+		- dsnRef: Referencia al DSN utilizado para el LOG
+	-->
+	<!ELEMENT logSettings EMPTY>
+	<!ATTLIST logSettings
+		status (LOG_NONE | LOG_ERRORS | LOG_AUDIT | LOG_ALL) "LOG_NONE"
+		dsnRef		IDREF	#IMPLIED>
+	
+	<!-- queryMode
+		Establece la forma de construir las clausulas WHERE
+		- status: 0,1,2
+	-->
+	<!ELEMENT queryMode EMPTY>
+	<!ATTLIST queryMode
+		status (0 | 1 | 2) "2">	
+	
+	<!-- DSNZone
+		Seccción que contendrá distintos DSN
+	-->
+	<!ELEMENT DSNZone (dbDSN | wsDSN)+>	
+	
+	<!-- dbDSN
+		Define un DSN de conexión a una BD relacional. Se indentificará por un atributo "id" único.
+		El atributo sgbd del elemento dbDSN indica el tipo de SGBD al que nos conectamos.		
+		Cuando conectemos a oracle, podemos optar por una conexión con especificación completa
+		(atributo sgbd de tipo 'thin' u 'oracle-thin') o por una conexión con alias (atributo sgbd
+		de tipo 'oci', 'oci8' u 'oracle'). 
+		Con conexiones de tipo 'thin' u 'oracle-thin' debemos especificar todos los elementos
+		de la conexión (dbHost, dbPort, dbDatabase, dbUser y dbPassword).
+		En el caso de conexiones con alias, de tipo 'oci', 'oci8' u 'oracle', sólo debemos
+		especificar en el atributo dbHost un SID válido en el TNSNames y el dbUser (usuario) y 
+		dbPassword (contraseña).  
+	-->
+	<!ELEMENT dbDSN (dbHost, dbPort?, dbDatabase?, dbUser, dbPassword)? >
+	<!ATTLIST dbDSN
+		id     		ID		#REQUIRED
+		sgbd (
+			postgres | pgsql |
+			oracle | oci8 | oci | 
+			thin | oracle-thin |
+			mysql | sqlite | sqlsrv
+		) "postgres"
+	>
+	
+	<!-- En el caso de Oracle con conexión OCI se utiliza dbHost para incluir el SID -->
+	<!ELEMENT dbHost (#PCDATA)>	
+	<!ELEMENT dbPort (#PCDATA)>	
+	<!ELEMENT dbDatabase (#PCDATA)>
+	<!ELEMENT dbUser (#PCDATA)>
+	<!ELEMENT dbPassword (#PCDATA)>
+	
+	
+	<!-- wsDSN
+		Define un DSN de conexión a un Web Service. Se indentificará por un atributo "id" único.
+	-->
+	<!ELEMENT wsDSN (uriWSDL?, wsUser?, wsPassword?) >
+	<!ATTLIST wsDSN
+		id     		ID		#REQUIRED
+	>
+	<!--URI para localizar el fichero descriptor del servicio Web wsdl (Web Service Descriptor Language)  -->
+	<!ELEMENT uriWSDL (#PCDATA)>
+	<!ELEMENT wsUser (#PCDATA)>
+	<!ELEMENT wsPassword (#PCDATA)>
+
+	<!--smtpServer Define el servidor SMTP  -->
+	<!ELEMENT smtpServer (smtpHost, smtpPort?, smtpUser?, smtpPassword)>
+	<!ELEMENT smtpHost (#PCDATA)>
+	<!ELEMENT smtpPort (#PCDATA)>
+	<!ELEMENT smtpUser (#PCDATA)>
+	<!ELEMENT smtpPassword (#PCDATA)>
+]>
+<gvHidraConfig>	
+<!-- 
+	Fichero de configuración del framework gvHidra.
+	Este fichero aparecerá como mínimo dentro del directorio IGEP, pero
+	también podrá aparecer en cada directorio "custom", o en el directorio
+	raíz de la aplicación.
+	A través de este sistema, podremos 	sobreescribir (personalizar) valores
+	a nivel de:
+	- Framework (igep/config.xml)
+	- Grupo de aplicaciones u organización (igep/custom/config)
+	- Aplicación (apl/) donde "apl" es el directorio de la aplicación
+	En caso de varios valores para un mismo parámetro, siempre mandará
+	por tanto el valor que se establezca en el fichero a nivel de aplicación.
+-->
+
+	<applicationName>Asoka</applicationName>
+	<appVersion>1.0.0</appVersion> <!-- Sustituya @version@ por su versión, ej 1.0.1 -->	
+	<customTitle>Asoka</customTitle> <!-- Sustituya @-@ por su titulo de barra, ej Anualidad 2011 -->
+	<customDirName>asoka</customDirName>
+	<templatesCompilationDir>templates_c/</templatesCompilationDir> <!--  Fijar directorio para la cahcé de plantillas  -->
+	<temporalDir>/tmp</temporalDir> <!-- Fijar directorio temporal -->
+	<reloadMappings>true</reloadMappings> <!-- En producción false -->
+	<smartyCompileCheck>true</smartyCompileCheck> <!-- En producción false -->
+	<!--logSettings status='LOG_NONE' dsnRef ='gvh_dsn_log'/-->
+<logSettings status='LOG_ALL' dsnRef ='g_my_log'/>
+	<queryMode status='2' />	
+		
+	<DSNZone>
+
+		<dbDSN id='g_my' sgbd='mysql'>
+			<dbHost>localhost</dbHost>
+			<dbPort>3306</dbPort>
+			<dbDatabase>asoka</dbDatabase>
+			<dbUser>ae_asoka</dbUser>
+			<dbPassword>aeasoka</dbPassword>
+		</dbDSN>
+		<dbDSN id='g_my_log' sgbd='mysql'>
+			<dbHost>localhost</dbHost>
+			<dbPort>3306</dbPort>
+			<dbDatabase>comun</dbDatabase>
+			<dbUser>debugger</dbUser>
+			<dbPassword>debugger</dbPassword>
+		</dbDSN>
+
+	</DSNZone>
+	
+</gvHidraConfig>

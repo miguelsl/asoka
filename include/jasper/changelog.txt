@@ -1,0 +1,100 @@
+Versiones:
+
+PROXIMA
+
+jasper-4_5_1_2 (28/08/2012)
+- Se actualizan los drivers de Oracle (fichero classes12.jar) a los de la versión 10.2 (última versión compatible con
+Oracle 8)
+- Cuando el informe se lanza contra una base de datos Oracle a través de conexión OCI8, según versiones es necesario
+que la variable de entorno NLS_LANG esté definida, se modifica el código para comprobar que dicha variable tiene valor
+y de no ser así se fija a SPANISH_SPAIN.WE8ISO8859P15. Si se desea otro valor, basta con fijar en el código PHP a través
+de putenv("NLS_LANG=IDIOMA_PAIS.CODIFICACION") antes de invocar al método createResultFile().
+
+jasper-4_5_1_1 (04/16/2012)
+	- Se prepara una actualización al motor 4.6.0. Sin embargo no se utiliza de momento por incompatibilidad con JRE 1.5
+	- Se crea el método forceLangUserOptions():
+		 /**
+		 * InformeJasper::forceLangUserOptions() Invoca a la JVM con opciones fijas de lenguaje.
+		 * @access public
+		 * @param string $userLang Lenguaje para la JVM [es, en, ...]
+		 * @param string $userCountry Pais del lenguaje para la JVM [ES, UK, ...]
+		 * @param string $userVariant Variante del lenguaje posible [ES, AR, ...]
+		 */
+	- Se crea el método setJavaHome():
+		 /**
+		 * InformeJasper::setJavaHome() Fija un JAVA_HOME concreto
+		 * @access public
+		 * @param string $str_path Ruta al JRE
+		 */
+
+jasper-4_5_1_0 (27-03-2012)
+	- Se actualiza al motor jasperReport 4.5.1 (versión de iReport recomendada 4.5.1)
+	- Se corrige BUG en entornos Windowsrelacionado con la función setProjectPath() y setReportPath()
+
+
+jasper-4_0_1_3 (18-07-2011)
+	- Se crean los métodos disableSupport() y enableSupport() que reciben como parámetro
+	una de estas cadenas:
+			'chart-themes':		Librerías de generación de gráficos
+			'mysql-connector':	JDBC para acceder a MySQL
+			'groovy-all':		Soporte a expresiones Groovy
+			'codebars':			Soporte a códigos de barra
+	Y deshabilitan o habilitan la carga de los ficheros JARS correspondientes.
+	Por defecto, TODO está habilitado.
+
+
+4.0.1.2 (11-07-2011)
+	- Se actualizan los logos de la CIT	
+
+4.0.1.1 (16-03-2011)
+	- BUG Corregido Falta incluir el jar para conectarse a MySQL
+	- BUG corregido Fallan algunos informes con conexión a BD por falta de jars
+	
+4.0.1.0 (01-03-2011)
+	- BUG Corregido BUG de lanzamiento JAVA en Windows (escape comillas)
+	- Se actualiza al motor jasperReport 4.0.1 (versión de iReport recomendada 4.0.1)
+
+
+4.0.0.2 (31-01-2011)
+	- Autocarga de fuentes ".jar". Toda fuente en formato ".jar" colocada en el directorio:
+		/codaplicacion/include/jasper/jars/fonts
+	Podrá ser utilizada en los informes independientemente de que esté instalada o no como fuente de la máquina que aloja el servidor Web.
+	- Inclusión de multitud de fuentes de licencia abierta o uso público:
+          - Familia arial: arial.jar
+          - Familia Courier New: courier_new.jar
+          - Familia Liberation Mono: liberation_mono.jar
+          - Familia Liberation serif: liberation_serif.jar
+          - Familia Linux Biolinum: linux_biolinum.jar
+          - Familia Linux Libertine: linux_libertine.jar
+          - Familia Lucida Sans Typewriter: lucida_sans_typewriter.jar
+          - Familia Times New Roman: times_new_roman.jar
+          - Familia Veranda: veranda.jar
+          - Familia Verdana: verdana.jar
+    
+
+4.0.0.1 (18-01-2011)
+    - Se crea y se incluye un jar con la familia de fuente True Type "Liberation Sans" (jars/fonts/liberation_sans.jar)
+
+4.0.0.0 (15-01-2011)
+    - Se incluye el jar de Groovy para aquellos que usan ese lenguaje para expresiones
+    - Se actualiza al motor jasperReport 4.0.0 (versión de iReport recomendada 4.0.0)
+	- Se añade el tipo básico CSV asociado a CALC (openOffice). Código proporcionado por Ignacio Santos.
+
+
+3.0.0.4 (22-07-2010)
+    - BUG en la función importPearDSN(). No asignaba el puerto si era distinto del puerto por defecto.
+    - BUG en la función _javaCall() para entornos Windows.
+
+3.0.0.3 (23-12-2009)
+	- Se crea método setTempDir para poder cambiar ubicación de temporales
+	- La creación de temporales en php5 se hace indicándole carpeta de temporales del sistema
+	- Se crea metodo setSecurityMode para permitir usar el exec_dir con el script jasper_exec_dir.sh
+	- La ejecución de jasper ya no crea ningún fichero temporal vacío
+	- Para formar el classpath se modifica el separador en función de si es windows o linux
+	- Método addParam se corrige error tipográfico con el boolean
+	- Se crea un fichero de changelog para tener un histórico de cambios
+
+3.0.0.4 (22-07-2010)
+	- BUG en la función importPearDSN(). No asignaba el puerto si era distinto del puerto por defecto.
+	- BUG en la función _javaCall() para entornos Windows.
+

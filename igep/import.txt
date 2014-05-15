@@ -1,0 +1,10 @@
+# Este fichero no es usado por 'desplegar'
+# Sólo existe para indicar la versión de igep y los subproyectos que requiere
+igep igep-4_0_6
+#igep igep-4_0_rama
+#wscmn/php/client/WSAuth.wsdl   wscmn-php-0_4_2    copia    /custom/
+# Subproyectos que usa esta versión
+# Deben indicarse en la aplicación que use igep
+#comun		 comun-1_4_0		copia	/include/
+#informesod  informesod-0_3_0   copia   /include/
+#jasper      jasper-4_0_1_1		copia	/include/

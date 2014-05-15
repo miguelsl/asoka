@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- LOGIN ----------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+div#login {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	left: 25%;
+	top: 10%;
+	width:50%;
+	height:auto;
+	position: absolute;
+}
+
+div#aplLogin {  
+	width: 100%;
+	text-align: center;
+}
+
+div#titleLogin {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	float: left;
+	width: 100%;
+	height: auto;
+	text-decoration: underline;
+	color: #4b7054;
+	padding: 30px 10px 10px 10px;
+}
+
+div#formLogin {
+	text-align: center;
+	float: left;	
+	width: 95%;
+	height: auto;
+	color: #4b7054;
+	border: 5px solid #546632;	
+	border-radius: 15px 15px 15px 15px;
+	-webkit-box-shadow: #d7c9bf 0px 5px 5px 5px;
+    box-shadow: #d7c9bf 0px 5px 5px 5px;
+    padding: 5px 5px 10px 5px;
+}
+
+div#textLogin {
+	text-align: right;
+	float: left;
+	padding-left: 70px;
+	vertical-align: bottom;
+	font-size: 11px;
+	width: 20%;
+	text-align: left;
+}
+	
+div#inputLogin {
+	width: 70%;
+	padding-left: 30px;
+}
+
+div#footLogin {
+    padding: 15px;
+    margin: 90px 0px 0px 15px;
+    text-align: center;
+	left: 30%;
+	float: left;
+	width:85%;
+	height:auto;
+}

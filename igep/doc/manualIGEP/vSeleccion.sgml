@@ -1,0 +1,35 @@
+<chapter id="vSeleccion">
+<title>Ventanas de selección</title>
+<para>Serán ventanas emergentes que completarán información del panel
+   	en el que nos encontramos. </para>
+<para>Normalmente aparecerá un botón
+<inlinemediaobject>
+	     <imageobject>
+	       <imagedata align="center" fileref="../img/13.png" format="png">
+	     </imageobject>
+           </inlinemediaobject>
+        al lado del campo con el que se	abrirá la ventana de selección.</para>
+        <para>En está ventana habrá un campo superior de búsqueda donde
+    	introduciremos el valor a buscar. Una vez introducido este valor
+    	pulsaremos el botón
+           <inlinemediaobject>
+	     <imageobject>
+	       <imagedata align="center" fileref="../img/50.png" format="png">
+	     </imageobject>
+           </inlinemediaobject> 
+        y abajo nos aparecerá un listado con el
+    	resultado de la búsqueda.
+        </para>
+        <para>Del listado resultante se podrá seleccionar, mediante un check, el
+        registro que contiene la información deseada. Al pulsar el botón
+        ACEPTAR, estos valores se copiaran en los campos correspondientes del
+        panel principal, donde nos encontrábamos.</para>
+    <figure>
+      <title>Ejemplo ventana selección</title>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="../img/vseleccion.png" format="png">
+	</imageobject>
+      </mediaobject>
+    </figure>
+</chapter>

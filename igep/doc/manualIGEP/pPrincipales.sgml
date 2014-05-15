@@ -1,0 +1,193 @@
+<chapter id="pPrincipales">
+    <title>Pantallas principales</title>
+    <para>Las pantallas están divididas en dos areas:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Barra superior:</para> 
+      	<blockquote>
+      	  <para>Contiene el menú propio de la aplicación, además de otros datos, como el título de la opción elegida, el usuario...</para>
+      	</blockquote>
+      </listitem>     
+      <listitem>
+         <para>Panel/es:</para>
+         <blockquote>
+	   <para>Donde se mostrará la información o el formulario/s correspondiente a la opción elegida.</para>
+      	 </blockquote>
+      </listitem>
+    </itemizedlist>
+    <sect1 id="Menu">
+      	<title>3.1 Menú</title>
+      		<para>Este elemento se encuentra situado en la barra superior
+      		en la esquina izquierda. </para>
+                <para>Es un menú desplegable donde aparecerán las opciones del
+      		menú elegido en la pantalla de inicio. Las opciones de este
+      		bloque podrán volverse a desplegar para entrar en mayor detalle</para>
+                <figure>
+                   <title>Ejemplo menú</title>
+                   <mediaobject>
+                	<imageobject>
+                	  <imagedata fileref="../img/menu.png" format="png">
+                	</imageobject>
+                   </mediaobject>
+                </figure>
+    </sect1>
+    <sect1 id="Paneles">
+    	<title>3.2 Paneles</title>
+ 	<para>Zona donde encontraremos el formulario correspondiente a la
+ 	opción elegida para poder trabajar con él.</para>
+        <para>El panel está dividido en cuatro zonas diferenciables: 
+ 		<itemizedlist>
+	    		<listitem>
+                             <para>Barra superior</para>
+    				<para>En la parte izquierda nos informa del título de la pantalla,
+    			 	y en la derecha, pueden o no
+    				aparecer unos botones (ToolTip), que actuarán
+    				sobre el formulario que aparece en el panel (concretamente
+    				sobre las líneas seleccionadas) y no
+    				efectuarán acciones sobre la base
+    				de datos.</para>
+	    		</listitem>
+	    		<listitem>
+                             <para>Área de trabajo</para>
+    				<para>Zona donde se presentará la información
+    				dependiendo del modo de trabajo en el que nos
+    				encontremos.</para>
+	    		</listitem>
+	    		<listitem>
+                             <para>Barra pie</para>
+    				<para>En esta zona encontraremos los botones,
+    				cuyas acciones sí actuarán sobre la base de
+    				datos, y el paginador que utilizaremos para
+    				navegar por los resultados.</para>
+	    		</listitem>
+	    		<listitem>
+                             <para>Área de modos de trabajo</para>
+    			     <para>Pestañas que aparecen en el lateral
+    			     izquierdo con las que se puede cambiar el modo de
+    			     trabajo, se activarán conforme la funcionalidad
+    			     de la opción elegida.</para>
+	                     <para>Existen tres tipos de modo de
+    			     trabajo:</para> 
+                             <blockquote>
+	                       <para>Modo buscar: (lupa) formularios de
+                               búsqueda.</para>
+                           <para>Modo ficha:
+                               registros en modo ficha.</para>
+                               <para>Modo tabla: tabla con un
+            	               listado de registros.</para>
+	                     </blockquote>
+	    		</listitem>
+ 		  </itemizedlist>
+ 	</para>
+        <figure>
+        <title>Ejemplo panel</title>
+           <mediaobject>
+             	<imageobject>
+               	  <imagedata fileref="../img/panel.png" format="png">
+               	</imageobject>
+            </mediaobject>
+         </figure>
+       <sect2 id="PanelDependiente">
+         <title>3.2.1 Paneles Dependientes</title>
+         <para>En una misma pantalla pueden aparecer dos paneles. Estos son
+         paneles dependientes porque la información entre ellos esta
+         directamente relacionada.</para>
+         <para>Tenemos dos tipos de paneles dependientes:</para>
+         <blockquote>
+           <para>- Maestro/Detalle</para>
+           <para>- Árbol</para>
+         </blockquote>
+         <sect3 id="MaetroDetalle">
+          <title>3.2.1.1 Maestro Detalle</title>
+          <para>Se trata de una pantalla en la cual aparecen dos paneles
+          situados uno encima del otro, pero aunque los dos aparezcan en la
+          misma pantalla cada uno tendrá sus modos de trabajo y su barra de
+          pie. </para>
+          <para>Los tipos de maestro/detalle que encontraremos son:</para>
+          <itemizedlist>
+	    <listitem>
+	      <para>Maestro->ficha | Detalle->ficha</para>
+	    </listitem>
+	    <listitem>
+	      <para>Maestro->ficha | Detalle->tabla</para>
+	    </listitem>
+	    <listitem>
+	      <para>Maestro->tabla | Detalle->tabla</para>
+	    </listitem>
+	    <listitem>
+	      <para>Maestro->tabla | Detalle->ficha</para>
+	    </listitem>
+          </itemizedlist>
+          <figure>
+           <title>Ejemplo Maestro/Detalle</title>
+             <mediaobject>
+             	<imageobject>
+               	  <imagedata fileref="../img/maestroDetalle.png" format="png">
+               	</imageobject>
+             </mediaobject>
+         </figure> 
+         </sect3>
+         <sect3 id="Arbol">
+         <title>3.2.1.2 Árbol</title>
+         <para>Otro tipo de paneles dependientes son los que contienen una
+         estructura de árbol, donde el panel subordinado siempre corresponderá
+         a un nodo del árbol.</para>
+         <para>Este tipo de paneles se situarán uno al lado del otro, siendo
+         el de la izquierda el correspondiente al árbol.</para>
+         <para>El panel del árbol se podrá plegar 
+             <inlinemediaobject>
+	      <imageobject>
+	        <imagedata align="center" fileref="../img/55.gif" format="gif">
+              </imageobject>
+             </inlinemediaobject>
+         o desplegar 
+             <inlinemediaobject>
+	      <imageobject>
+	        <imagedata align="center" fileref="../img/54.gif" format="gif">
+              </imageobject>
+             </inlinemediaobject>
+         para optimizar el espacio.</para>
+         <para>Las imagenes que nos indicarán como recorrer el árbol son las
+         siguientes:</para>
+         <blockquote>
+           <para>- 
+             <inlinemediaobject>
+	      <imageobject>
+	        <imagedata align="center" fileref="../img/plusbottom.gif"
+         format="gif">
+              </imageobject>
+             </inlinemediaobject>
+             : Indicará que se puede desplegar el nodo.
+           </para>
+           <para>- 
+             <inlinemediaobject>
+	      <imageobject>
+	        <imagedata align="center" fileref="../img/minusbottom.gif"
+         format="gif">
+              </imageobject>
+             </inlinemediaobject>
+             : Indicará que se puede plegar el nodo.
+           </para>
+           <para>- 
+             <inlinemediaobject>
+	      <imageobject>
+	        <imagedata align="center" fileref="../img/file.gif"
+         format="gif">
+              </imageobject>
+             </inlinemediaobject>
+             : Indica que es un nodo hijo.
+           </para>
+         </blockquote>
+
+         <figure>
+           <title>Ejemplo árbol</title>
+             <mediaobject>
+             	<imageobject>
+               	  <imagedata fileref="../img/arbol2.png" format="png">
+               	</imageobject>
+             </mediaobject>
+         </figure>
+         </sect3>
+      </sect2>   
+     </sect1>
+</chapter>

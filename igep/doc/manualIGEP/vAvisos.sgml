@@ -1,0 +1,41 @@
+<chapter id="vAvisos">
+<title>Ventanas de alerta, aviso y error</title>
+  	<para>Muestran información importante para el transcurso de la
+  	aplicación. Cuando una ventana de este tipo salta al ejecutar
+  	cualquier acción al cerrarlas volveremos al panel donde nos
+  	encontrabamos.</para>
+        <para>Tienen un tamaño mas pequeño que el panel y no nos deja ejecutar
+  	ninguna accion hasta haberlas cerrado. Son ventanas modales.</para>
+        <para>El color de la pantalla nos indica distintos tipos de
+  	mensajes. Siendo estos:</para>
+        <itemizedlist>
+          <listitem>
+              <para>Rojo:</para>
+               <blockquote>
+                <para>Errores ocurridos, no dejara continuar hasta
+                  que se corrija el error.</para>
+               </blockquote>
+          </listitem>
+          <listitem>
+              <para>Amarillo: </para>
+               <blockquote>
+                <para>Alertas</para>
+               </blockquote>
+          </listitem>
+          <listitem>
+              <para>Azul:<para>
+               <blockquote>
+                <para>Avisos u otro tipo de información que se quiere
+                 dar al usuario.</para>
+               </blockquote>
+           </listitem>
+        </itemizedlist>
+       <figure>
+       <title>Ejemplo pantalla aviso</title>
+       <mediaobject>
+          <imageobject>
+	     <imagedata fileref="../img/vaviso.png" format="png">
+	  </imageobject>
+       </mediaobject>
+       </figure>
+</chapter>

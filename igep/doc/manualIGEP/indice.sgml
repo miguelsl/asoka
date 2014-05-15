@@ -1,0 +1,28 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+<!ENTITY introduccion.sgml SYSTEM "introduccion.sgml">
+<!ENTITY pInicial.sgml SYSTEM "pInicial.sgml">
+<!ENTITY pPrincipales.sgml SYSTEM "pPrincipales.sgml">
+<!ENTITY vSeleccion.sgml SYSTEM "vSeleccion.sgml">
+<!ENTITY vAvisos.sgml SYSTEM "vAvisos.sgml">
+<!ENTITY elemPanel.sgml SYSTEM "elemPanel.sgml">
+
+]>
+
+<book id="indice" lang="es">
+  <bookinfo>
+   <date>14 de Abril de 2005</date>
+    <title><acronym>Manual Guía de Estilo</acronym></title>
+    <subtitle>Una guía básica del funcionamiento de las aplicaciones</subtitle>
+    <authorgroup>
+      <author>
+	<firstname>Servicio de Organización e Informática</firstname>
+      </author>
+     </authorgroup>
+  </bookinfo>
+&introduccion.sgml;
+&pInicial.sgml;
+&pPrincipales.sgml;
+&vSeleccion.sgml;
+&vAvisos.sgml;
+&elemPanel.sgml;
+</book>
