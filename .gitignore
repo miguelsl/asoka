@@ -1,0 +1,9 @@
+igep
+.project
+templates_c
+.svn
+.settings
+build.xml
+build_common.xml
+.buildpath
+.svnignore
