@@ -173,16 +173,16 @@
 		<dbDSN id='g_my' sgbd='mysql'>
 			<dbHost>localhost</dbHost>
 			<dbPort>3306</dbPort>
-			<dbDatabase>asoka</dbDatabase>
-			<dbUser>ae_asoka</dbUser>
-			<dbPassword>aeasoka</dbPassword>
+			<dbDatabase></dbDatabase>
+			<dbUser></dbUser>
+			<dbPassword></dbPassword>
 		</dbDSN>
 		<dbDSN id='g_my_log' sgbd='mysql'>
 			<dbHost>localhost</dbHost>
 			<dbPort>3306</dbPort>
 			<dbDatabase>comun</dbDatabase>
-			<dbUser>debugger</dbUser>
-			<dbPassword>debugger</dbPassword>
+			<dbUser></dbUser>
+			<dbPassword></dbPassword>
 		</dbDSN>
 
 	</DSNZone>
